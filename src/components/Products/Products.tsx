@@ -3,15 +3,15 @@ import { Product } from '../types/types'
 
 function Card(props) {
     return (
-        <div>
+        <div className="card">
             <div>
                 <img src={props.product.coverImage} alt={props.product.title} />
             </div>
-            <div>
+            <div className="title"> 
                 {props.product.title}
             </div>
-            <div>
-                 {props.product.price}
+            <div className="price">
+                 {props.product.price.toLocaleString()}
             </div>
             <div>
                 Add to Cart
@@ -46,7 +46,7 @@ function Products() {
             <div>
                 <h2>Class101</h2>
             </div>
-            <div>
+            <div className="cardWrap">
                 {renderCard}
             </div>
         </div>
