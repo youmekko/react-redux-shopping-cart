@@ -11,10 +11,10 @@ function Card(props) {
                 {props.product.title}
             </div>
             <div className="price">
-                 {props.product.price.toLocaleString()}
+                ₩ {props.product.price.toLocaleString()}
             </div>
-            <div>
-                Add to Cart
+            <div className="cart">
+               장바구니 담기
             </div>
         </div>
     )
@@ -49,7 +49,7 @@ function Products() {
     return (
         <div>
             <div>
-                <h2>Class101</h2>
+                <h2>CLASS101</h2>
             </div>
             <div className="cardWrap">
                 {renderCard}
