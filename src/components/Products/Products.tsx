@@ -29,9 +29,14 @@ function Products() {
             .then(res => res.json())
             .then(res => {
                 if (res.data) {
+                    res.data.sort((a:Product, b:Product) => {
+                        if (a.score > b.score) return -1
+                        if (a.score < b.score) return 1
+                        return 0
+                    })
                     setProducts(res.data)
                 } else {
-                    alert('Failed')
+                    alert('클래스 목록 가져오기에 실패 했습니다.')
                 }
                
             })
