@@ -1,27 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Product } from '../types/types'
-import Pagination from '../Pagination/Pagination'
-
-function Card(props) {
-    return (
-        <div className="card">
-            <div>
-                <img src={props.product.coverImage} alt={props.product.title} />
-            </div>
-            <div className="cardTitle"> 
-                {props.product.title}
-            </div>
-            <div className="cardButtom"> 
-                <div className="price">
-                    ₩ {props.product.price.toLocaleString()}
-                </div>
-                <div className="cart">
-                    담기
-                </div>
-            </div>
-        </div>
-    )
-}
+import Card from './Card'
+import Pagination from './Pagination'
 
 function Products() {
     const [Products, setProducts] = useState([])
