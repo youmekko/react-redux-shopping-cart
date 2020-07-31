@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
-import NavBar from '../components/NavBar/NavBar'
-import Products from '../components/Products/Products'
-import Cart from '../components/Cart/Cart'
+import NavBar from '../components/NavBar'
+import Products from '../components/Products'
+import Cart from '../components/Cart'
 
 const Root: React.FC = () => {
     return (
