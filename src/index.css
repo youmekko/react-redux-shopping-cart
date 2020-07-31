@@ -29,11 +29,16 @@ html {
   column-gap: 1.5em;
 }
 
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .cardWrap {
   margin-top: 20px;
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 15px;
   grid-template-columns: repeat(5, minmax(200px, 1fr));
 }
 
@@ -73,24 +78,32 @@ html {
 
 .card {
   border: 1px solid #d8d8d8;
+  border-radius: 5px;
+}
+
+.cardTitle {
+  font-size: 14px;
+  height: 65px;
   padding: 10px;
 }
 
-.title {
-  font-size: 14px;
-  height: 54px;
-}
-
-.price {
+.cardButtom {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
   font-size: 14px;
   font-weight: bold;
 }
 
 .cart {
-  background-color: #000;
-  color: #fff;
-  text-align: center;
-  font-size: 12px;
-  padding: 5px;
-  margin-top: 10px;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border: 1px solid #444444;
+  border-collapse: collapse;
+}
+th, td {
+  border: 1px solid #444444;
 }
