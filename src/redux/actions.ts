@@ -1,6 +1,7 @@
 import { 
     FETCH_PRODUCTS,
-    ADD_TO_CART
+    ADD_TO_CART,
+    REMOVE_FROM_CART
 } from './actionTypes'
 
 export const fetchProducts = () => async (dispatch) => {
@@ -15,10 +16,18 @@ export const fetchProducts = () => async (dispatch) => {
 }
 
 export const addToCart = proudct => {
-    console.log('actioncart')
+    console.log('action addToCart')
     return ({
         type: ADD_TO_CART,
         payload: proudct
+    })
+}
+
+export const removeFromCart = productId => {
+    console.log('action removeFromCart')
+    return ({
+        type: REMOVE_FROM_CART,
+        payload: productId
     })
 }
 
