@@ -1,17 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './routes/index'
-import * as serviceWorker from './serviceWorker';
-import './index.css'
+import Class101App from './components/Class101App'
+import './styles.css'
+
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import { fetchProducts } from './redux/actions';
+
+const rootElement = document.getElementById('root')
+
+store.dispatch(fetchProducts())
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Root />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Provider store={store}>
+    <Class101App />
+  </Provider>,
+  rootElement
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
