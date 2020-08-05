@@ -1,6 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../redux/actions'
 
 function Card({ product }) {
+    const dispatch = useDispatch()
+
+    const onClickAddToCart = () => {
+        console.log('cart')
+        dispatch(addToCart(product))
+    }
+
     return (
         <div className="card">
             <div>
@@ -14,7 +23,7 @@ function Card({ product }) {
                     ₩ {product.price.toLocaleString()}
                 </div>
                 <div className="cart">
-                    담기
+                    <span onClick={onClickAddToCart}>담기</span>
                 </div>
             </div>
         </div>
