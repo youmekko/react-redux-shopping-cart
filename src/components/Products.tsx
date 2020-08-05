@@ -6,24 +6,24 @@ import Pagination from './Pagination'
 
 function Products({ itemList }) {    
     const [currentPage, setcurrentPage] = useState(1)
-    const [productPerPage, setproductPerPage] = useState(5)
-    const indexOfLastProduct = currentPage * productPerPage;
-    const indexOfFirstProduct = indexOfLastProduct - productPerPage;
-    const currentProducts = itemList.sort((a:Product, b:Product) => b.score - a.score)
-                            .slice(indexOfFirstProduct, indexOfLastProduct);
+    const [itemsPerPage, setItemsPerPage] = useState(5)
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = itemList.sort((a:Product, b:Product) => b.score - a.score)
+                            .slice(indexOfFirstItem, indexOfLastItem);
 
     const paginate = (pageNumber:number) => setcurrentPage(pageNumber)
 
-    const renderCard = (currentProducts) => currentProducts.map((product:Product, idx) => {
+    const renderCard = (currentItems) => currentItems.map((product:Product, idx) => {
         return <Card product={product} key={idx} />
     })
     
     return (
         <div>
             <div className="cardWrap">
-                {renderCard(currentProducts)}
+                {renderCard(currentItems)}
             </div>
-            <Pagination itemPerPage={productPerPage} totalItems={itemList.length} paginate={paginate} />
+            <Pagination itemPerPage={itemsPerPage} totalItems={itemList.length} paginate={paginate} />
         </div>
     )
 }
