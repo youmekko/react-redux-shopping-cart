@@ -14,22 +14,27 @@ export default function(state = initialState , action) {
             }   
         }
         case ADD_TO_CART: {
-            const product = state.itemList.find((item:Product) => item.id === action.payload.id) || {}
-            product['carted'] = true
-            product['quantity'] = 1
-
             return {
                 ...state,
-                itemList: [...state.itemList]
+                itemList: state.itemList.map((item:Product) => 
+                item.id === action.payload.id
+                ? { 
+                    ...item,
+                    carted: true,
+                    quantity: 1
+                } : item )
             }
         }
         case REMOVE_FROM_CART: {
-            const product = state.itemList.find((item:Product) => item.id === action.payload) || {}
-            product['carted'] = false
-            product['quantity'] = 0
             return {
                 ...state,
-                itemList: [...state.itemList]
+                itemList: state.itemList.map((item:Product) => 
+                    item.id === action.payload
+                    ? {
+                        ...item,
+                        carted: false,
+                        quantity: 1
+                    } : item)
             }
        }
         default :
