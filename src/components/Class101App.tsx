@@ -8,8 +8,8 @@ import Cart from './Cart'
 function Class101App() {
     return (
         <div>
-            <NavBar />
             <BrowserRouter>
+                <NavBar />
                 <Switch>
                     <Route path='/products' exact component={Products} />
                     <Route path='/cart' exact component={Cart} />
