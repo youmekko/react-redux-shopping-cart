@@ -16,6 +16,11 @@ html {
   box-sizing: border-box;
 }
 
+a:link {
+  color: #000;
+  text-decoration: none;
+}
+
 *,
 *:before,
 *:after {
@@ -83,7 +88,7 @@ html {
 
 .cardTitle {
   font-size: 14px;
-  height: 65px;
+  height: 60px;
   padding: 10px;
 }
 
