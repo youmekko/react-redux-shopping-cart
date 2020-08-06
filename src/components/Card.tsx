@@ -4,15 +4,12 @@ import { addToCart, removeFromCart } from '../redux/actions'
 
 function Card({ product }) {
     const dispatch = useDispatch()
-    const [carted, setCarted] = useState(false)
 
     const onAddToCart = () => {
-        setCarted(true)
         dispatch(addToCart(product))
     }
 
     const onRemoveFromCart = () => {
-        setCarted(false)
         dispatch(removeFromCart(product.id))
     }
 
@@ -29,7 +26,7 @@ function Card({ product }) {
                     ₩ {product.price.toLocaleString()}
                 </div>
                 <div className="cart">
-                    {carted ? 
+                    {product.carted ? 
                         (<span onClick={onRemoveFromCart}>빼기</span>) 
                         : (<span onClick={onAddToCart}>담기</span>)}
                 </div>

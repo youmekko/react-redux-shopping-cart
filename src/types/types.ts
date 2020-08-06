@@ -5,4 +5,6 @@ export interface Product {
     price: number;
     score: number;
     availableCoupon: boolean;
+    carted: boolean;
+    quantity: number;
 }
