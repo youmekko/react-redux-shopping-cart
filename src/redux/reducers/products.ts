@@ -13,18 +13,19 @@ export default function(state = initialState , action) {
                 itemList: action.payload
             }   
         }
-        case ADD_TO_CART: {
+
+        case ADD_TO_CART: {            
             return {
                 ...state,
                 itemList: state.itemList.map((item:Product) => 
-                item.id === action.payload.id
-                ? { 
-                    ...item,
-                    carted: true,
-                    quantity: 1
-                } : item )
+                    item.id === action.payload.id
+                    ? { 
+                        ...item,
+                        carted: true,
+                    } : item )
             }
         }
+
         case REMOVE_FROM_CART: {
             return {
                 ...state,
@@ -33,7 +34,6 @@ export default function(state = initialState , action) {
                     ? {
                         ...item,
                         carted: false,
-                        quantity: 1
                     } : item)
             }
        }

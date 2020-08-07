@@ -7,8 +7,11 @@ const initialState = {
 
 export default function(state = initialState , action) {
     switch (action.type) {
-        case ADD_TO_CART: {
-            const product = action.payload
+        case ADD_TO_CART: {           
+            const product = {
+                ...action.payload,
+                quantity: 1
+            }
             return {
                 ...state,
                 itemList: [...state.itemList, product]
