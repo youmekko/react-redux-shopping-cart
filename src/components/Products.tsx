@@ -3,9 +3,11 @@ import { connect } from 'react-redux'
 import { Product } from '../types/types'
 import Card from './Card'
 import Pagination from './Pagination'
+import queryString from 'query-string'
 
-function Products({ itemList }) {    
-    const [currentPage, setcurrentPage] = useState(1)
+function Products({ itemList, match }) {    
+    const query = queryString.parse(window.location.search)
+    const [currentPage, setcurrentPage] = useState<any>(query.page || 1)
     const [itemsPerPage, setItemsPerPage] = useState(5)
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -23,7 +25,12 @@ function Products({ itemList }) {
             <div className="cardWrap">
                 {renderCard(currentItems)}
             </div>
-            <Pagination itemPerPage={itemsPerPage} totalItems={itemList.length} paginate={paginate} />
+            <Pagination itemPerPage={itemsPerPage} 
+                        totalItems={itemList.length} 
+                        paginate={paginate} 
+                        currentPage={currentPage}
+                        match={match}
+             />
         </div>
     )
 }

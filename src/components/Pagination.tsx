@@ -1,29 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-function Pagination({ itemPerPage, totalItems, paginate }) {
+function Pagination({ itemPerPage, totalItems, paginate, currentPage, match }) {
     const pageNumber:Array<number> = []
                                             
     for (let i:number = 1; i <= Math.ceil(totalItems / itemPerPage); i++) {
         pageNumber.push(i)
     }
 
-    console.log('pageName', paginate)
-
     return (
         <ul className="pagination">
             {pageNumber.map(pageNum =>{
                 return (
-                <Link to={`${match.url}?page=${pageNum}`}
-                    onClick={() => paginate(pageNum)}
-                >
-                    <li
-                        key={pageNum}
+                <li key={pageNum}>
+                    <Link to={`${match.url}?page=${pageNum}`}
                         onClick={() => paginate(pageNum)}
+                        className={currentPage === pageNum ? 'active' : ''}
                     >
-                        <a href="#" className={true ? '' : 'active'}>{pageNum}</a>
-                    </li>
-                </Link>
+                        {pageNum}
+                    </Link>
+                </li>
                 )
             })}
         </ul>

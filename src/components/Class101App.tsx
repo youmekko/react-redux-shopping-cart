@@ -11,7 +11,7 @@ function Class101App() {
             <BrowserRouter>
                 <NavBar />
                 <Switch>
-                    <Route path='/products?page=1' exact component={Products} />
+                    <Route path='/products' exact component={Products} />
                     <Route path='/cart' exact component={Cart} />
                     <Redirect path='*' to='/products' />
                 </Switch>

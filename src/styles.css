@@ -19,6 +19,11 @@ html {
 a:link {
   color: #000;
   text-decoration: none;
+  cursor: default;
+}
+
+a:visited {
+  color: #000
 }
 
 *,
@@ -101,6 +106,34 @@ a:link {
   font-weight: bold;
 }
 
+ul.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 20px 0;
+}
+
+ul.pagination li {display: inline;}
+
+ul.pagination li a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+}
+
+ul.pagination li a.active {
+  background-color: #000;
+  color: white;
+  border: 1px solid #000;
+}
+
+ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+
+
 table {
   width: 100%;
   border: 1px solid #444444;
@@ -109,28 +142,4 @@ table {
 th, td {
   border: 1px solid #444444;
 }
-ul.pagination {
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-}
 
-ul.pagination li {display: inline;}
-
-ul.pagination li a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color .3s;
-    border: 1px solid #ddd;
-    margin: 0 4px;
-}
-
-ul.pagination li a.active {
-    background-color: #4CAF50;
-    color: white;
-    border: 1px solid #4CAF50;
-}
-
-ul.pagination li a:hover:not(.active) {background-color: #ddd;}
