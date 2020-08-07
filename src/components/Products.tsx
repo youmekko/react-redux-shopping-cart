@@ -11,8 +11,7 @@ function Products({ itemList, match }) {
     const [itemsPerPage, setItemsPerPage] = useState(5)
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = itemList.sort((a:Product, b:Product) => b.score - a.score)
-                            .slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = itemList.slice(indexOfFirstItem, indexOfLastItem);
 
     const paginate = (pageNumber:number) => setcurrentPage(pageNumber)
 

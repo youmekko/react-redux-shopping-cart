@@ -4,13 +4,14 @@ import {
     REMOVE_FROM_CART
 } from './actionTypes'
 import { Product } from '../types/types'
-import products from './reducers/products'
 
 export const fetchProducts = () => async (dispatch, getState) => {
     const products =  await fetch('http://localhost:3001/data/productItems.json')
         .then(res => res.json())
         .then(res => res.data)
-         
+        
+    products.sort((a:Product, b:Product) => b.score - a.score)
+                         
     dispatch ({
         type: FETCH_PRODUCTS,
         payload: products
