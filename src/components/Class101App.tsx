@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
-
 import NavBar from './NavBar'
 import Products from './Products'
 import Cart from './Cart'

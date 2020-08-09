@@ -37,16 +37,8 @@ function Cart({ itemList, selectedAll }) {
                                 checked={selectedAll}
                                 onChange={onChangeSelectedAll}
                             />
-                            {/* <input type="checkbox" 
-                                onChange={(event) => {
-                                    let checked = event.target.checked
-                                    setSelectedItems(selectedItems.map((selectedItem) => {
-                                        selectedItem.selected = checked
-                                        return selectedItem
-                                    }))
-                                }}/> */}
                         </th>
-                        <th scope="col" colSpan={2}>클래스명</th>
+                        <th scope="col">클래스명</th>
                         <th scope="col">수량</th>
                         <th scope="col">가격</th>
                         <th scope="col">쿠폰 적용</th>
@@ -64,23 +56,8 @@ function Cart({ itemList, selectedAll }) {
                                         checked={item.selected}
                                         onChange={onChangeSelected}
                                     />
-                                    {/* <input type="checkbox" 
-                                        checked={item.selected} 
-                                        value={item.id} 
-                                        onChange={(event) => {
-                                            let checked = event.target.checked
-                                            setSelectedItems(
-                                                selectedItems.map(selectedItem => {
-                                                    if (item.id === selectedItem.id) {
-                                                        selectedItem.selected = checked
-                                                    }
-                                                    return selectedItem
-                                                })
-                                            )
-                                        }} 
-                                    /> */}
                                 </td>
-                                <td><img src={item.coverImage} style={{ width: '200px' }}/></td>
+                                {/* <td><img src={item.coverImage} style={{ width: '200px' }}/></td> */}
                                 <td>{item.title}</td>
                                 <td>
                                     <input type="number" 
@@ -99,7 +76,7 @@ function Cart({ itemList, selectedAll }) {
                     : 
                     (<tbody>
                         <tr>
-                            <td colSpan={6}>장바구니에 담긴 상품이 없습니다.</td>
+                            <td colSpan={5}>장바구니에 담긴 상품이 없습니다.</td>
                         </tr>
                     </tbody>)
                 }

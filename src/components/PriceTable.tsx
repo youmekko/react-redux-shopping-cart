@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Product, Coupon } from '../types/types'
+import React, { useState } from 'react'
+import { Product } from '../types/types'
 import Coupons from './Coupons'
 
 function PriceTable ({ itemList }) {
@@ -54,19 +54,19 @@ function PriceTable ({ itemList }) {
     }
 
     return (
-        <div style={{marginTop: '30px'}}>
+        <div className="priceTable">
             <Coupons onChangeCoupon={onChangeCoupon} selectedCoupon={selectedCoupon} />
             <table>
                 <tbody>
                     <tr>
                         <td>상품 금액</td>
-                        <td>{getTotalPrice()}</td>
+                        <td>{getTotalPrice().toLocaleString()}</td>
                         <td>상품 할인 금액</td>
-                        <td>{getDiscountAmount()}</td>
+                        <td>{getDiscountAmount().toLocaleString()}</td>
                     </tr>
                     <tr>
                         <td>결제 금액</td>
-                        <td colSpan={3}>{getFinalPrice()}</td>
+                        <td colSpan={3} className="finalPrice">{getFinalPrice().toLocaleString()}</td>
                     </tr>
                 </tbody>
             </table>

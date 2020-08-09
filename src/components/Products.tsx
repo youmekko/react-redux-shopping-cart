@@ -4,18 +4,15 @@ import { Product } from '../types/types'
 import ProductCard from './ProductCard'
 import Pagination from './Pagination'
 import queryString from 'query-string'
-// import { addToCart } from '../redux/actions'
 
 function Products({ products, match }) {    
-    const dispatch = useDispatch()
-
     const query = queryString.parse(window.location.search)
+    
+    const itemsPerPage = 5
     const [currentPage, setcurrentPage] = useState<any>(query.page || 1)
-    const [itemsPerPage, setItemsPerPage] = useState(5)
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = products.itemList.slice(indexOfFirstItem, indexOfLastItem);
-
     const paginate = (pageNumber:number) => setcurrentPage(pageNumber)
 
     const renderCard = (currentItems) => currentItems.map((product:Product, idx) => {
