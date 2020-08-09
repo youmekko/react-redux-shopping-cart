@@ -7,4 +7,12 @@ export interface Product {
     availableCoupon: boolean;
     carted: boolean;
     quantity: number;
+    selected: boolean;
+}
+
+export interface Coupon {
+    type: string;
+    title: string;
+    discountRate: number;
+    discountAmount: number;
 }

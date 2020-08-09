@@ -1,7 +1,10 @@
 import { 
     FETCH_PRODUCTS,
     ADD_TO_CART,
-    REMOVE_FROM_CART
+    REMOVE_FROM_CART,
+    CHANGE_SELECTED,
+    CHANGE_SELECTED_ALL,
+    CHANGE_QUANTITY
 } from './actionTypes'
 import { Product } from '../types/types'
 
@@ -19,7 +22,6 @@ export const fetchProducts = () => async (dispatch, getState) => {
 }
 
 export const addToCart = product => (dispatch, getState)=> {
-
     const { cart } = getState()
     const itemList = cart.itemList
 
@@ -42,5 +44,31 @@ export const removeFromCart = productId => {
     })
 }
 
+export const changeSelected = (id, selected) => {
+    return ({
+        type: CHANGE_SELECTED,
+        payload: {
+            id: id,
+            selected: selected
+        }
+    })
+}
+
+export const changeSelectedAll = selectedAll => {
+    return ({
+        type: CHANGE_SELECTED_ALL,
+        payload: selectedAll
+    })
+}
+
+export const changeQuantity = (id, quantity) => {
+    return({
+        type: CHANGE_QUANTITY,
+        payload: {
+            id: id,
+            quantity: quantity
+        }
+    })
+}
 
    
