@@ -1,18 +1,55 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import { Product } from '../types/types'
+import { changeSelected, changeSelectedAll, changeQuantity} from '../redux/actions' 
+import PriceTable from './PriceTable'
 
-function Cart({ itemList }) {
+function Cart({ itemList, selectedAll }) {
+    const dispatch = useDispatch()
+
+    const onChangeSelected = (event) => {
+        const id = event.target.value
+        const selected = event.target.checked
+        dispatch(changeSelected(id, selected))
+    }
+
+    const onChangeSelectedAll = (event) => {
+        const selected = event.target.checked
+        dispatch(changeSelectedAll(selected))
+    }
+
+    const onChangeQuantity = (event) => {
+        const id = event.target.name
+        const quantity = event.target.value
+
+        if (quantity > 0 && quantity <= 10) {
+            dispatch(changeQuantity(id, quantity))
+        }
+    }
+
     return (
         <div>
             <table>
                 <thead>
                     <tr>
-                        <th><input type="checkbox" /></th>
-                        <th colSpan={2}>클래스명</th>
-                        <th>수량</th>
-                        <th>가격</th>
-                        <th>쿠폰 적용</th>
+                        <th scope="col">
+                            <input type="checkbox" 
+                                checked={selectedAll}
+                                onChange={onChangeSelectedAll}
+                            />
+                            {/* <input type="checkbox" 
+                                onChange={(event) => {
+                                    let checked = event.target.checked
+                                    setSelectedItems(selectedItems.map((selectedItem) => {
+                                        selectedItem.selected = checked
+                                        return selectedItem
+                                    }))
+                                }}/> */}
+                        </th>
+                        <th scope="col" colSpan={2}>클래스명</th>
+                        <th scope="col">수량</th>
+                        <th scope="col">가격</th>
+                        <th scope="col">쿠폰 적용</th>
                     </tr>
                 </thead>
                 
@@ -21,16 +58,43 @@ function Cart({ itemList }) {
                         {itemList.map((item:Product, idx) => {
                             return (
                             <tr key={idx}>
-                                <td><input type="checkbox" /></td>
+                                <td scope="row">
+                                    <input type="checkbox"
+                                        value={item.id}
+                                        checked={item.selected}
+                                        onChange={onChangeSelected}
+                                    />
+                                    {/* <input type="checkbox" 
+                                        checked={item.selected} 
+                                        value={item.id} 
+                                        onChange={(event) => {
+                                            let checked = event.target.checked
+                                            setSelectedItems(
+                                                selectedItems.map(selectedItem => {
+                                                    if (item.id === selectedItem.id) {
+                                                        selectedItem.selected = checked
+                                                    }
+                                                    return selectedItem
+                                                })
+                                            )
+                                        }} 
+                                    /> */}
+                                </td>
                                 <td><img src={item.coverImage} style={{ width: '200px' }}/></td>
                                 <td>{item.title}</td>
-                                <td>{item.quantity}</td>
-                                <td>{item.price}</td>
+                                <td>
+                                    <input type="number" 
+                                        name={item.id}
+                                        value={item.quantity}
+                                        onChange={onChangeQuantity}>
+                                    </input>
+                                </td>
+                                <td>{item.price.toLocaleString()}</td>
                                 <td>{item.availableCoupon === undefined ? '가능' : '불가'}</td>
                             </tr>
                             )
                         })}
-                         </tbody>
+                    </tbody>
                     )
                     : 
                     (<tbody>
@@ -41,14 +105,15 @@ function Cart({ itemList }) {
                 }
                
             </table>
+            <PriceTable itemList={itemList} />
         </div>
     )
 }
 
 const mapStateToProps = state => {
     const { cart } = state
-    const { itemList } = cart
-    return { itemList }
+    const { itemList, selectedAll } = cart
+    return { itemList, selectedAll }
 }
 
 export default connect(mapStateToProps)(Cart)
