@@ -4,14 +4,13 @@ import { Coupon } from '../types/types'
 function Coupons ({ onChangeCoupon, selectedCoupon }) {
     const [coupons, setCoupons] = useState([])
     
-    
     useEffect(() => {
         const coupons = fetch('http://localhost:3001/data/coupons.json')
             .then(res => res.json())
             .then(res => setCoupons(res.data)) 
     }, [])
     
-    return (<div>
+    return (<div className="coupons">
             <label>
                 <input type="radio" 
                     name="coupon" 

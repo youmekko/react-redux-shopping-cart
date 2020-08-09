@@ -106,6 +106,10 @@ a:visited {
   font-weight: bold;
 }
 
+.cart .inCart {
+  color: rgb(196, 196, 196);
+}
+
 ul.pagination {
   display: flex;
   justify-content: center;
@@ -136,10 +140,36 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 
 table {
   width: 100%;
-  border: 1px solid #444444;
+  border: 1px solid #fff;
   border-collapse: collapse;
 }
+
 th, td {
-  border: 1px solid #444444;
+  border: 1px solid #000;
+  text-align: center;
+  height: 50px;
+}
+
+th {
+  background-color: #000;
+  color: #fff;
+}
+
+.priceTable {
+  margin-top: 30px;
+}
+
+.priceTable td{
+  width: 25%;
+  font-weight: bold;
+}
+
+.priceTable .finalPrice{
+  font-size: 20px;
+  color: red;
+}
+
+.coupons {
+  margin-bottom: 10px;
 }
 

@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { connect, useDispatch } from 'react-redux'
+import React from 'react'
+import { useDispatch } from 'react-redux'
 import { addToCart, removeFromCart } from '../redux/actions'
 
 function ProductCard({ product }) {
@@ -27,8 +27,8 @@ function ProductCard({ product }) {
                 </div>
                 <div className="cart">
                     {product.carted ? 
-                        (<span onClick={onRemoveFromCart}>빼기</span>) 
-                        : (<span onClick={onAddToCart}>담기</span>)}
+                        (<span className="inCart" onClick={onRemoveFromCart}>빼기</span>) 
+                        : (<span className="outCart" onClick={onAddToCart}>담기</span>)}
                 </div>
             </div>
         </div>
