@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { connect, useDispatch } from 'react-redux'
+import { connect } from 'react-redux'
 import { Product } from '../types/types'
 import ProductCard from './ProductCard'
 import Pagination from './Pagination'
@@ -7,7 +7,7 @@ import queryString from 'query-string'
 
 function Products({ products, match }) {    
     const query = queryString.parse(window.location.search)
-    
+
     const itemsPerPage = 5
     const [currentPage, setcurrentPage] = useState<any>(query.page || 1)
     const indexOfLastItem = currentPage * itemsPerPage;

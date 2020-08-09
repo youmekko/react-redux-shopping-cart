@@ -5,7 +5,7 @@ function Coupons ({ onChangeCoupon, selectedCoupon }) {
     const [coupons, setCoupons] = useState([])
     
     useEffect(() => {
-        const coupons = fetch('http://localhost:3001/data/coupons.json')
+        fetch('http://localhost:3001/data/coupons.json')
             .then(res => res.json())
             .then(res => setCoupons(res.data)) 
     }, [])
