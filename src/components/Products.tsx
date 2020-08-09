@@ -1,22 +1,25 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import { Product } from '../types/types'
-import Card from './Card'
+import ProductCard from './ProductCard'
 import Pagination from './Pagination'
 import queryString from 'query-string'
+// import { addToCart } from '../redux/actions'
 
-function Products({ itemList, match }) {    
+function Products({ products, match }) {    
+    const dispatch = useDispatch()
+
     const query = queryString.parse(window.location.search)
     const [currentPage, setcurrentPage] = useState<any>(query.page || 1)
     const [itemsPerPage, setItemsPerPage] = useState(5)
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = itemList.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = products.itemList.slice(indexOfFirstItem, indexOfLastItem);
 
     const paginate = (pageNumber:number) => setcurrentPage(pageNumber)
 
     const renderCard = (currentItems) => currentItems.map((product:Product, idx) => {
-        return <Card product={product} key={idx} />
+        return <ProductCard product={product} key={idx} />
     })
     
     return (
@@ -25,7 +28,7 @@ function Products({ itemList, match }) {
                 {renderCard(currentItems)}
             </div>
             <Pagination itemPerPage={itemsPerPage} 
-                        totalItems={itemList.length} 
+                        totalItems={products.itemList.length} 
                         paginate={paginate} 
                         currentPage={currentPage}
                         match={match}
@@ -36,8 +39,7 @@ function Products({ itemList, match }) {
 
 const mapStateToProps = state => {
     const { products } = state
-    const { itemList } = products
-    return { itemList }
+    return { products }
 }
 
 export default connect(mapStateToProps)(Products)

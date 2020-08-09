@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { addToCart, removeFromCart } from '../redux/actions'
 
-function Card({ product }) {
+function ProductCard({ product }) {
     const dispatch = useDispatch()
 
     const onAddToCart = () => {
@@ -35,4 +35,4 @@ function Card({ product }) {
     )
 }
 
-export default Card
+export default ProductCard
