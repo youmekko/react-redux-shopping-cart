@@ -12,7 +12,7 @@
 - styled component
 - redux-saga
 - next
-- immer 라이브러리
+- immer
 
 ### refactoring
 
