@@ -13,7 +13,3 @@
 - redux-saga
 - next
 - immer
-
-### refactoring
-
-리팩토링 예정중 [ 2020. 08. 17 작성]
